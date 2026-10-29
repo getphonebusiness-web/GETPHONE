@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GET PHONE | Premium Technical Platform</title>
+    <style>
+        :root {
+            --bg-deep: #0b0f19;
+            --bg-surface: #121826;
+            --bg-card: #1c2336;
+            --accent: #00a3e0;
+            --text-main: #f4f6f9;
+            --text-muted: #9ca3af;
+            --border-color: #263147;
+            --alert-red: #ef4444;
+            --terminal-green: #38bdf8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-deep); color: var(--text-main); line-height: 1.5; padding-bottom: 60px; }
+        nav { position: fixed; top: 0; left: 0; width: 100%; background-color: #0b0f19; border-bottom: 1px solid var(--border-color); z-index: 1000; display: flex; justify-content: space-around; padding: 14px 0; }
+        nav a { color: var(--text-muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; padding: 4px 8px; border-bottom: 2px solid transparent; }
+        .app-container { max-width: 600px; margin: 65px auto 0 auto; padding: 15px; }
+        .page { display: none; }
+        #page-vision { display: block; }
+        :target { display: block !important; }
+        :target ~ #page-vision { display: none !important; }
+        #page-hardware:target ~ #page-vision, #page-os:target ~ #page-vision, #page-beta:target ~ #page-vision { display: none !important; }
+        .hero-section { text-align: center; padding: 20px 5px; }
+        .tagline { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+        h1 { font-size: 26px; letter-spacing: -0.5px; margin-bottom: 8px; }
+        .lead-text { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
+        .spec-card { background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px; margin-bottom: 16px; }
+        .spec-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; border-bottom: 1px solid rgba(38, 49, 71, 0.5); padding-bottom: 6px; }
+        .spec-indicator { width: 4px; height: 16px; background-color: var(--accent); border-radius: 1px; }
+        h2 { font-size: 16px; color: var(--text-main); font-weight: 600; }
+        p { font-size: 13.5px; color: var(--text-muted); margin-bottom: 8px; }
+        .hardware-canvas { background-color: var(--bg-surface); border: 1px dashed var(--accent); border-radius: 8px; padding: 20px 10px; text-align: center; margin: 15px 0; }
+        .wireframe-text { font-family: monospace; font-size: 11px; line-height: 1.4; color: var(--text-muted); display: inline-block; text-align: left; }
+        .allocator-box { margin-top: 12px; background: var(--bg-card); padding: 15px; border-radius: 6px; border: 1px solid var(--border-color); }
+        .allocator-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .step-btn { background-color: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-main); font-size: 20px; font-weight: bold; width: 44px; height: 44px; border-radius: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .metrics-grid { display: flex; gap: 10px; }
+        .metric-box { flex: 1; background-color: var(--bg-surface); padding: 10px; border-radius: 4px; text-align: center; border: 1px solid var(--border-color); }
+        .metric-val { font-size: 16px; font-weight: 700; color: var(--accent); font-family: monospace; }
+        .terminal-box { background-color: #05070c; border: 1px solid var(--border-color); border-radius: 6px; padding: 12px; margin-top: 10px; font-family: monospace; font-size: 11px; color: var(--terminal-green); height: 130px; overflow-y: auto; white-space: pre-wrap; }
+        .terminal-btn { background: rgba(0, 163, 224, 0.1); color: var(--accent); border: 1px solid var(--accent); padding: 12px; font-size: 11px; font-weight: bold; border-radius: 4px; width: 100%; margin-top: 10px; text-transform: uppercase; }
+        form { background-color: var(--bg-surface); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; }
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+        .submit-btn { width: 100%; background-color: var(--accent); color: var(--bg-deep); border: none; padding: 12px; font-size: 13px; font-weight: 700; border-radius: 4px; text-transform: uppercase; }
+        .risk-banner { background-color: rgba(239, 68, 68, 0.08); border: 1px solid var(--alert-red); border-radius: 6px; padding: 12px; margin-top: 15px; }
+        footer { text-align: center; margin-top: 40px; font-size: 11px; color: var(--text-muted); padding-top: 15px; border-top: 1px solid var(--border-color); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#page-vision">Vision</a>
+        <a href="#page-hardware">Hardware</a>
+        <a href="#page-os">OS & Log</a>
+        <a href="#page-beta">Sandbox</a>
+    </nav>
+    <div class="app-container">
+        <div id="page-vision" class="page">
+            <div class="hero-section">
+                <div class="tagline">Coherent Architecture Platform</div>
+                <h1>GET PHONE</h1>
+                <p class="lead-text">La prima architettura mobile in cui silicio, firmware e sistema operativo lavorano in totale autonomia per la sovranità dei dati.</p>
+            </div>
+            <div class="spec-card">
+                <div class="spec-header"><div class="spec-indicator"></div><h2>La Filosofia del Progetto</h2></div>
+                <p>GET PHONE unifica la protezione direttamente nel circuito stampato, escludendo canali di tracciamento commerciale o perdite involontaria di flussi dati.</p>
+            </div>
+        </div>
+        <div id="page-hardware" class="page">
+            <div class="hero-section">
+                <div class="tagline">Geometria Ispezionabile</div>
+                <h1>Specifiche Hardware</h1>
+            </div>
+            <div class="hardware-canvas">
+                <div class="wireframe-text">
+                    +------------------------------------+<br>
+
+                    | [O] Banda Ottica Meccanica Front.  |<br>
+                    |                                    |<br>
+                    |      CHASSIS GEOMETRICO LINEARE    |<br>
+                    |      FOTOCAMERE A FILO SCOCCA      |<br>
+                    |                                    |<br>
+                    | [=] Display Posteriore E-Paper     |<br>
+                    +------------------------------------+
+                </div>
+            </div>
+        </div>
+        <div id="page-os" class="page">
+            <div class="hero-section">
+                <div class="tagline">Dual-Isolation Layer</div>
+                <h1>Sistema & Servizi</h1>
+            </div>
+            <div class="spec-card">
+                <div class="spec-header"><div class="spec-indicator"></div><h2>SMART MACHINE Enclave</h2></div>
+                <div class="allocator-box">
+                    <div class="allocator-controls">
+                        <button type="button" class="step-btn" onclick="adjustMemory(-512)">-</button>
+                        <div style="text-align:center;">
+                            <div style="font-size:10px; color:var(--text-muted); text-transform:uppercase;">RAM SMART MACHINE</div>
+                            <div id="ram-text" style="font-size:20px; color:var(--accent); font-weight:bold; font-family:monospace;">2.00 GB</div>
+                        </div>
+                        <button type="button" class="step-btn" onclick="adjustMemory(512)">+</button>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-box"><div id="metric-aosp" class="metric-val">6.00 GB</div><div style="font-size:10px; color:var(--text-muted);">RAM PER SISTEMA AOSP</div></div>
+                        <div class="metric-box"><div id="metric-secure" class="metric-val">50%</div><div style="font-size:10px; color:var(--text-muted);">INDICE INTEGRITÀ</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="spec-card">
+                <div class="spec-header"><div class="spec-indicator"></div><h2>Simulazione Sequenza Verified Boot</h2></div>
+                <div id="kernel-terminal" class="terminal-box">In attesa dell'ispezione...</div>
+                <button type="button" class="terminal-btn" onclick="triggerBootLog()">Avvia Ispezione Log</button>
+            </div>
+        </div>
+        <div id="page-beta" class="page">
+            <div class="hero-section">
+                <div class="tagline">Data Validation</div>
+                <h1>Sandbox Registration</h1>
+            </div>
+            <form id="betaForm" action="javascript:void(0);" onsubmit="sendFormMock()">
+                <div class="form-group"><label>Indirizzo Email</label><input type="email" id="userEmail" required placeholder="nome@azienda.it"></div>
+                <button type="submit" class="submit-btn">Invia Candidatura</button>
+            </form>
+            <div id="successBlock" style="display:none; background:rgba(0,163,224,0.1); border:1px solid var(--accent); padding:12px; border-radius:4px; text-align:center; margin-top:10px;">Candidatura registrata.</div>
+            <div class="risk-banner"><h3>AVVISO TRASPARENZA</h3><p style="font-size:11.5px;">Il progetto si trova in fase pre-prototype concettuale.</p></div>
+        </div>
